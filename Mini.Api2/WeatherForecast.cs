@@ -1,6 +1,6 @@
 using System;
 
-namespace JWTApi
+namespace Mini.Api2
 {
     public class WeatherForecast
     {

@@ -1,11 +1,11 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JWTApi.Controllers
+namespace Mini.Api3.Controllers
 {
     [ApiController]
     [Route("[controller]")]
