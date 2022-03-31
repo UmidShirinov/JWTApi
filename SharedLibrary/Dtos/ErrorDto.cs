@@ -19,13 +19,13 @@ namespace SharedLibrary.Dtos
         public ErrorDto(string error , bool isShow)
         {
             Errors.Add(error);
-            IsShow = true;
+            IsShow = isShow;
         }
 
         public ErrorDto(List<string> errors , bool isShow)
         {
             Errors = errors;
-            IsShow=isShow
+            IsShow = isShow;
         }
     }
 }
