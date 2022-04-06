@@ -5,19 +5,19 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTApi", "JWTApi\JWTApi.csproj", "{D42B32F6-90A7-44DD-86AF-6197B87D6683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Core", "AuthServer.Core\AuthServer.Core.csproj", "{AFFBA380-B072-43FC-B2B6-0BD93B2E66F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Core", "AuthServer.Core\AuthServer.Core.csproj", "{AFFBA380-B072-43FC-B2B6-0BD93B2E66F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Data", "AuthServer.Data\AuthServer.Data.csproj", "{054CC9D3-2995-47A7-B501-1AA035045018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Data", "AuthServer.Data\AuthServer.Data.csproj", "{054CC9D3-2995-47A7-B501-1AA035045018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Service", "AuthServer.Service\AuthServer.Service.csproj", "{80532DD7-4AF4-4CF9-9DB0-0BF0975136D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Service", "AuthServer.Service\AuthServer.Service.csproj", "{80532DD7-4AF4-4CF9-9DB0-0BF0975136D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini.Api1", "Mini.Api1\Mini.Api1.csproj", "{52556262-C306-420E-ABA1-80A9171AF0D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mini.Api1", "Mini.Api1\Mini.Api1.csproj", "{52556262-C306-420E-ABA1-80A9171AF0D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini.Api2", "Mini.Api2\Mini.Api2.csproj", "{C726CD96-352F-44A5-A96E-D37CBB101088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mini.Api2", "Mini.Api2\Mini.Api2.csproj", "{C726CD96-352F-44A5-A96E-D37CBB101088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini.Api3", "Mini.Api3\Mini.Api3.csproj", "{21BC58FA-D675-4A63-B939-05C96BBDDC99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mini.Api3", "Mini.Api3\Mini.Api3.csproj", "{21BC58FA-D675-4A63-B939-05C96BBDDC99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{F48F6C5C-E9AB-4EAF-A164-39FA2BE97135}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{F48F6C5C-E9AB-4EAF-A164-39FA2BE97135}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
