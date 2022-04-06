@@ -12,10 +12,10 @@ namespace SharedLibrary.Dtos
         public T Data { get; private set; }
         public int StatusCode { get; private set; }
         [JsonIgnore]
-        public bool IsSuccessfull { get; private set; }
+        public bool IsSuccessfull { get; private set; }     
         public ErrorDto Error { get; private set; }
 
-
+                    
         public static Response<T> Success(T data , int statusCode)
         {
             // data elave edildikde ve ya get edildikde isdifade olunur
