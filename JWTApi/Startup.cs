@@ -28,8 +28,8 @@ namespace JWTApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-
-            services.Configure<CustomTokenOption>(Configuration.GetSection("TokenOption"));
+            var _appsetting = Configuration.GetSection("TokenOption");
+            services.Configure<CustomTokenOption>(_appsetting); 
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
