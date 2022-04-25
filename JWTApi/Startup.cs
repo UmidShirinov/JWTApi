@@ -1,3 +1,4 @@
+using AuthServer.Core.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,8 +29,10 @@ namespace JWTApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var _appsetting = Configuration.GetSection("TokenOption");
-            services.Configure<CustomTokenOption>(_appsetting); 
+            var _appSetting = Configuration.GetSection("TokenOption");
+            var _appSettingClient = Configuration.GetSection("Clients");
+            services.Configure<CustomTokenOption>(_appSetting); 
+            services.Configure<Client>(_appSettingClient); 
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
