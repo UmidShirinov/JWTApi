@@ -32,7 +32,7 @@ namespace JWTApi
             var _appSetting = Configuration.GetSection("TokenOption");
             var _appSettingClient = Configuration.GetSection("Clients");
             services.Configure<CustomTokenOption>(_appSetting); 
-            services.Configure<Client>(_appSettingClient); 
+            services.Configure<List<Client>>(_appSettingClient); 
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
