@@ -1,8 +1,18 @@
 using AuthServer.Core.Configuration;
+using AuthServer.Core.Model;
+using AuthServer.Core.Repositories;
+using AuthServer.Core.Services;
+using AuthServer.Core.UnitOfWork;
+using AuthServer.Data;
+using AuthServer.Data.Repositories;
+using AuthServer.Service.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +21,7 @@ using Microsoft.OpenApi.Models;
 using SharedLibrary.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,10 +40,67 @@ namespace JWTApi
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<IAutentiocationService, AuthenticationService>();
+            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped(typeof(IGenericRepostiory<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IServices<,>), typeof(GenericService<,>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                var server = Configuration.GetConnectionString("SqlServer");
+                options.UseSqlServer(server, sqlOption =>
+                {
+
+                    sqlOption.MigrationsAssembly("AuthServer.Data");
+
+                });
+            });
+
+            services.AddIdentity<UserApp, IdentityRole>(opt=> { //identityRole  clas yaradib orda inherit elemek olardi amma bele daha qisa olur
+                opt.User.RequireUniqueEmail = true;
+                opt.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();   
+
+
+
+
+
+
             var _appSetting = Configuration.GetSection("TokenOption");
             var _appSettingClient = Configuration.GetSection("Clients");
             services.Configure<CustomTokenOption>(_appSetting); 
-            services.Configure<List<Client>>(_appSettingClient); 
+            services.Configure<List<Client>>(_appSettingClient);
+
+
+            services.AddAuthentication(opt => {
+
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+            {
+                var tokenOptions = Configuration.GetSection("TokenOption").Get<CustomTokenOption>();
+                opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience[0],
+                    IssuerSigningKey = SignService.GetSecurityKey(tokenOptions.SecurityKey),
+
+
+
+                    ValidateIssuerSigningKey = true,
+                    ValidateAudience =true,
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+
+                };
+
+            });
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
