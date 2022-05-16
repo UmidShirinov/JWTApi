@@ -40,10 +40,10 @@ namespace JWTApi.Controllers
             return ActionResultInstance(await _productServices.Update(productDto, productDto.Id));
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> RemoveProduct(ProductDto productDto)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveProduct(int id)
         {
-            return ActionResultInstance(await _productServices.Remove(productDto.Id));
+            return ActionResultInstance(await _productServices.Remove(id));
 
         }
     }
